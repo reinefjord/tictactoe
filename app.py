@@ -50,7 +50,7 @@ def is_valid_move(move):
     return move not in STATE['x'] | STATE['o']
 
 
-def send_state(ws):
+def get_state():
     state = {'positions': {}, 'turn': STATE['turn'], 'winner': STATE['winner']}
     for i in range(1, 10):
         if i in STATE['x']:
@@ -60,13 +60,20 @@ def send_state(ws):
         else:
             state['positions'][i] = None
     state['turn'] = STATE['turn']
+    return state
+
+
+def send_state(ws):
+    state = get_state()
     data = json.dumps(state)
     ws.write_message(data)
 
 
 def announce_state():
+    state = get_state()
+    data = json.dumps(state)
     for ws in WS_CLIENTS:
-        send_state(ws)
+        ws.write_message(data)
 
 
 class MainHandler(tornado.web.RequestHandler):
