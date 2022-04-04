@@ -93,8 +93,7 @@ class TicTacWebSocket(tornado.websocket.WebSocketHandler):
             STATE['winner'] = 'Ingen'
             reset()
         else:
-            STATE['turn'] = 'x' if STATE['turn'] == 'o' else 'o'
-        print(STATE)
+            STATE['turn'] = 'x' if player == 'o' else 'o'
         announce_state()
 
     def on_close(self):
