@@ -102,11 +102,14 @@ class TicTacWebSocket(tornado.websocket.WebSocketHandler):
 
 
 def make_app():
-    return tornado.web.Application([
-        (r"/", MainHandler),
-        (r"/static/(.*)", tornado.web.StaticFileHandler, {"path": "static"}),
-        (r"/websocket", TicTacWebSocket),
-    ])
+    return tornado.web.Application(
+        [
+            (r"/", MainHandler),
+            (r"/static/(.*)", tornado.web.StaticFileHandler, {"path": "static"}),
+            (r"/websocket", TicTacWebSocket),
+        ],
+        websocket_ping_interval=10
+    )
 
 
 if __name__ == "__main__":
