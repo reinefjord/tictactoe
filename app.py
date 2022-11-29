@@ -97,7 +97,7 @@ class TicTacWebSocket(tornado.websocket.WebSocketHandler):
             STATE['winner'] = player
             reset()
         elif is_end():
-            STATE['winner'] = 'Ingen'
+            STATE['winner'] = 'Nobody'
             reset()
         else:
             STATE['turn'] = 'x' if player == 'o' else 'o'
