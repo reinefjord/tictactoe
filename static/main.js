@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://tictactoe.reinefjord.net/websocket");
+var ws = new WebSocket("ws://tictactoe.vcxz.se/websocket");
 ws.onmessage = function (evt) {
   setState(JSON.parse(evt.data));
 };
