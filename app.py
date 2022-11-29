@@ -12,7 +12,7 @@ STATE = {
     'x': set(),
     'o': set(),
     'turn': 'x',
-    'winner': 'Ingen'
+    'winner': 'Nobody'
 }
 
 WINSTATES = [
